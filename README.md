@@ -54,7 +54,7 @@ You can add custom SASS files to your theme that do not reside in the Sage's def
 
 For example, for .scss files that are used in the components defined with AZ Elements plugin, add the following lines to `<theme>/assets/styles/main.scss` file:
 
-```
+```css
 // Elements custom .scss
 @import "../../az-elements/tile/scss/dat";
 @import "../../az-elements/hero/scss/main";
@@ -62,19 +62,27 @@ For example, for .scss files that are used in the components defined with AZ Ele
 
 ## Installation
 
-* Clone the content of the repository into `<theme>/_extras` directory
+* Clone the content of the repository into `<theme>/as-sage-extras` directory
 * Add the following code at the theme of `assets()` function in `lib/setup.php`
 
-```
+```php
+<?php
+
 // Enqueue extras
 \Roots\Sage\Setup\assets_extras();
+
+?>
 ```
 
 * Add the following code at the bottom of `<theme>/functions.php` file
  
- ```
+ ```php
+ <?php 
+ 
  // Bootstrap az-sage-extras
  if ( file_exists( __DIR__ . '/az-sage-extras/az-sage-extras-bootstrap.php' ) ) {
      require_once __DIR__ . '/az-sage-extras/az-sage-extras-bootstrap.php';
  }
+ 
+ ?>
  ```
