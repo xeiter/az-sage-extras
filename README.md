@@ -62,13 +62,19 @@ For example, for .scss files that are used in the components defined with AZ Ele
 
 ## Installation
 
-* Clone the content of the repository into <theme>/_extras directory
-* Add `\Roots\Sage\Setup\assets_extras();` `assets()` function in `lib/setup.php`
-* Add array elements to `$sage_includes` array in `functions.php` file
+* Clone the content of the repository into `<theme>/_extras` directory
+* Add the following code at the theme of `assets()` function in `lib/setup.php`
+
+```
+// Enqueue extras
+\Roots\Sage\Setup\assets_extras();
+```
+
+* Add the following code at the bottom of `<theme>/functions.php` file
  
  ```
- // Extras
- '_extras/lib/setup.php', // Debugging helpers
- '_extras/lib/debug.php', // Debugging helpers
- '_extras/lib/featured.php', // Working with featured images
+ // Bootstrap az-sage-extras
+ if ( file_exists( __DIR__ . '/az-sage-extras/az-sage-extras-bootstrap.php' ) ) {
+     require_once __DIR__ . '/az-sage-extras/az-sage-extras-bootstrap.php';
+ }
  ```
