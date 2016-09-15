@@ -86,3 +86,19 @@ For example, for .scss files that are used in the components defined with AZ Ele
  
  ?>
  ```
+ 
+ * Change order of blocks for Sass and Less in `gulpfile.js` so it looks like the following
+ 
+ ```
+ .pipe(function() {
+   return gulpif('*.scss', sass({
+     outputStyle: 'nested', // libsass doesn't support expanded yet
+     precision: 10,
+     includePaths: ['.'],
+     errLogToConsole: !enabled.failStyleTask
+   }));
+ })
+ .pipe(function() {
+     return gulpif('*.less', less());
+ })
+ ```
