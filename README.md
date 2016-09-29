@@ -55,7 +55,7 @@ You can add custom SASS files to your theme that do not reside in the Sage's def
 For example, for .scss files that are used in the components defined with AZ Elements plugin, add the following lines to `<theme>/assets/styles/main.scss` file:
 
 ```css
-// Elements custom .scss
+//* Elements custom .scss */
 @import "../../az-elements/tile/scss/dat";
 @import "../../az-elements/hero/scss/main";
 ```
@@ -102,3 +102,10 @@ For example, for .scss files that are used in the components defined with AZ Ele
      return gulpif('*.less', less());
  })
  ```
+
+* Add the following line to `<theme>/assets/styles/main.scss`
+
+* You may use the pre-defined elements stored in `elements` directory
+
+The Piklist configuration for the Elements are stored in `piklist` directory and in order to be picked up by the theme need to be copied to the `piklist` directory of the theme
+
