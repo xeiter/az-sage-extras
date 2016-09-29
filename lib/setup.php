@@ -4,6 +4,13 @@ namespace Roots\Sage\Setup;
 
 use Roots\Sage\Assets;
 
+add_theme_support('custom-logo', [
+    // whatever settings
+    // 'height' => 150,
+    // 'width' => 150,
+    'flex-width' => true,
+]);
+
 /**
  * Theme assets - extras
  */
