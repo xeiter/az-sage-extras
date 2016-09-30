@@ -16,3 +16,23 @@ function to_dashed($string) {
 
     return $string;
 }
+
+/**
+ * Sort array of associative arrays by specified key
+ *
+ * @param array  $array
+ * @param array $sort_by_key
+ * @return array
+ */
+function sort_array_of_arrays( $array, $sort_by_key ) {
+
+    usort( $array, function ( $item1, $item2 ) use ( $sort_by_key ) {
+
+        if ($item1[ $sort_by_key ] == $item2[ $sort_by_key ]) return 0;
+        return $item1[ $sort_by_key ] < $item2[ $sort_by_key ] ? -1 : 1;
+
+    });
+
+    return $array;
+
+}
