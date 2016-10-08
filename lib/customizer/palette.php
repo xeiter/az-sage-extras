@@ -16,7 +16,7 @@ if ( class_exists( 'Kirki' ) ) {
         'option_type' => '',
     ));
 
-// Define section
+    // Define section
     Kirki::add_section($prefix . 'palette_section', array(
         'title' => __('Theme palette section'),
         'panel' => '', // Not typically needed.
@@ -100,6 +100,14 @@ if ( class_exists( 'Kirki' ) ) {
 
         foreach ($updated_colours as $colour) {
             $variables_array[] = '.background-' . $colour['colour_reference'] . ' { background-color: $' . $colour['colour_reference'] . '; }';
+        }
+
+        $variables_array[] = "";
+
+        foreach ($updated_colours as $colour) {
+            $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-text { color: $' . $colour['colour_reference'] . '; }';
+            $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background { background-color: $' . $colour['colour_reference'] . '; }';
+            $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg { color: $' . $colour['colour_reference'] . '; }';
         }
 
         // Write updated variables in Sass file

@@ -109,3 +109,40 @@ For example, for .scss files that are used in the components defined with AZ Ele
 
 The Piklist configuration for the Elements are stored in `piklist` directory and in order to be picked up by the theme need to be copied to the `piklist` directory of the theme
 
+## Theme Palette
+
+AZ Sage Extras adds a section to Customizer that allows to define theme colour palette. Defined colours will have specialised CSS rules generated that can be used in custom Sass and CSS files.
+
+For example, if two colours are defined:
+
+1) Red - #FF0000
+2) Blue - #0000FF
+
+The following variables will be available:
+
+$colour-red: #ec174f;
+$colour-blue: #0078c1;
+
+And the following rules will be generated:
+
+.colour-red { color: $colour-red; }
+.colour-blue { color: $colour-blue; }
+
+.background-colour-red { background-color: $colour-red; }
+.background-colour-blue { background-color: $colour-blue; }
+
+.theme-colour-red .themed-text { color: $colour-red; }
+.theme-colour-red .themed-background { background-color: $colour-red; }
+.theme-colour-red .themed-svg { color: $colour-red; }
+.theme-colour-blue .themed-text { color: $colour-blue; }
+.theme-colour-blue .themed-background { background-color: $colour-blue; }
+.theme-colour-blue .themed-svg { color: $colour-blue; }
+
+## Page Colour Themes
+
+Building on top of the Theme Palette the following classes are available to enable "colour themes" for the pages:
+
+1) <body> tag class - .theme-colour-<colour_reference>
+2) classes that can be used for any tag: .themed-text, .themed-background, .themed-svg
+
+Each page has a meta field available "Page colour theme" that sources the list of Theme Palette colours and allows to select a colour theme for the page.
