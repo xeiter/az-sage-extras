@@ -105,6 +105,12 @@ if ( class_exists( 'Kirki' ) ) {
         $variables_array[] = "";
 
         foreach ($updated_colours as $colour) {
+            $variables_array[] = '.border-' . $colour['colour_reference'] . ' {border-color: $' . $colour['colour_reference'] . '; }';
+        }
+
+        $variables_array[] = "";
+
+        foreach ($updated_colours as $colour) {
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-text { color: $' . $colour['colour_reference'] . '; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background { background-color: $' . $colour['colour_reference'] . '; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg { color: $' . $colour['colour_reference'] . '; }';
