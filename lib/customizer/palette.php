@@ -105,6 +105,12 @@ if ( class_exists( 'Kirki' ) ) {
         $variables_array[] = "";
 
         foreach ($updated_colours as $colour) {
+            $variables_array[] = '.svg-' . $colour['colour_reference'] . ' { fill: $' . $colour['colour_reference'] . '; }';
+        }
+
+        $variables_array[] = "";
+
+        foreach ($updated_colours as $colour) {
             $variables_array[] = '.border-' . $colour['colour_reference'] . ' {border-color: $' . $colour['colour_reference'] . '; }';
         }
 
@@ -115,7 +121,8 @@ if ( class_exists( 'Kirki' ) ) {
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' a { color: $' . $colour['colour_reference'] . '; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background a { color: $colour-white; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background { background-color: $' . $colour['colour_reference'] . '; }';
-            $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg { color: $' . $colour['colour_reference'] . '; }';
+            $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg { fill: $' . $colour['colour_reference'] . '; }';
+            $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg-logo .path_separator { fill: $' . $colour['colour_reference'] . '; }';
         }
 
         // Write updated variables in Sass file
