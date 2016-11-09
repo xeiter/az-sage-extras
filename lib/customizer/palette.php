@@ -122,7 +122,7 @@ if ( class_exists( 'Kirki' ) ) {
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background a { color: $colour-white; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background { background-color: $' . $colour['colour_reference'] . '; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg { fill: $' . $colour['colour_reference'] . '; }';
-            $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg-logo .path_separator { fill: $' . $colour['colour_reference'] . '; }';
+            $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg-logo .separator { fill: $' . $colour['colour_reference'] . '; }';
         }
 
         // Write updated variables in Sass file

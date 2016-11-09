@@ -13,6 +13,7 @@ $extra_includes = [
     'az-sage-extras/lib/extras.php', // Extra helpers
     'az-sage-extras/lib/debug.php', // Debugging helpers
     'az-sage-extras/lib/featured.php', // Working with featured images
+    'az-sage-extras/lib/logo.php', // Working with custom logo
     'az-sage-extras/lib/customizer/palette.php', // Include palette Customizer section
     'az-sage-extras/lib/customizer/copyright.php', // Include copyright Customizer section
 
