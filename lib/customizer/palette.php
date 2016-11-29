@@ -121,6 +121,12 @@ if ( class_exists( 'Kirki' ) ) {
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-underline {     border-bottom: 7px solid $' . $colour['colour_reference'] . '; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background a { color: $colour-white; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background { background-color: $' . $colour['colour_reference'] . '; }';
+
+			// @todo fix this hack by deferentiating colours from their dark variations
+			if ( !preg_match( '/-dark/', $colour['colour_reference'] ) ) {
+				$variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background .btn { background-color: $colour-black }';
+				$variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background .btn:hover { background-color: $' . $colour['colour_reference'] . '-dark; }';
+			}
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg { fill: $' . $colour['colour_reference'] . '; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg-logo .separator { fill: $' . $colour['colour_reference'] . '; }';
         }
@@ -132,5 +138,3 @@ if ( class_exists( 'Kirki' ) ) {
     add_action('customize_save_after', 'az_palette_rewrite_sass_variables', 100);
 
 }
-
-
