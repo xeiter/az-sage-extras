@@ -16,6 +16,7 @@ $extra_includes = [
     'az-sage-extras/lib/logo.php', // Working with custom logo
     'az-sage-extras/lib/customizer/palette.php', // Include palette Customizer section
     'az-sage-extras/lib/customizer/copyright.php', // Include copyright Customizer section
+    'az-sage-extras/lib/customizer/errors.php', // Include errors settings
 
     'az-sage-extras/vendor/include-kirki.php', // Include Kirki plugin
     'az-elements/widgets.php', // Include registration of widgets
