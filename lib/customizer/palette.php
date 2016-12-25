@@ -118,15 +118,19 @@ if ( class_exists( 'Kirki' ) ) {
 
         foreach ($updated_colours as $colour) {
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-text { color: $' . $colour['colour_reference'] . '; }';
-            $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-underline {     border-bottom: 7px solid $' . $colour['colour_reference'] . '; }';
+            $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-underline { border-bottom: 7px solid $' . $colour['colour_reference'] . '; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background a { color: $colour-white; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background { background-color: $' . $colour['colour_reference'] . '; }';
 
-			// @todo fix this hack by deferentiating colours from their dark variations
-			if ( !preg_match( '/-dark/', $colour['colour_reference'] ) ) {
-				$variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background .btn { background-color: $colour-black }';
-				$variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background .btn:hover { background-color: $' . $colour['colour_reference'] . '-dark; }';
-			}
+            // @todo fix this hack by deferentiating colours from their dark variations
+            if ( !preg_match( '/-dark/', $colour['colour_reference'] ) ) {
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background .btn { background-color: $colour-black }';
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background .btn:hover { background-color: $' . $colour['colour_reference'] . '-dark; }';
+
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .element__hero a { color: $' . $colour['colour_reference'] . '; }';
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .element__hero a:hover { color: $' . $colour['colour_reference'] . '-dark; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . '-dark 30%, rgba(0, 0, 0, 0) 50%); }';
+
+            }
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg { fill: $' . $colour['colour_reference'] . '; }';
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg-logo .separator { fill: $' . $colour['colour_reference'] . '; }';
         }
