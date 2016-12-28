@@ -18,7 +18,7 @@ class AZ_Cache {
      * @access private
      * @static
      */
-    private static $_transient_name_prefix = '_transient_';
+    private static $_transient_name_prefix = '_az_cache_';
 
     /**
      * Build transient name using provided control variables
@@ -98,6 +98,22 @@ class AZ_Cache {
         }
         
     }
+
+    /**
+     * Delete all cache transients
+     *
+     * @access public
+     * @static
+     * @return string
+     */
+    public static function delete_all_transients() {
+
+        global $wpdb;
+
+        // Delete transients by either wildcard or direct name match
+        $wpdb->query( "DELETE FROM `$wpdb->options` WHERE `option_name` LIKE ('%az_cache_%')" );
+
+    }
     
     /**
      * Delete all posts elements transients
@@ -115,3 +131,62 @@ class AZ_Cache {
 
 }
 
+
+
+function create_dwb_menu() {
+
+    global $wp_admin_bar;
+
+    $post_id = is_admin() && isset( $_GET['post'] ) ? $_GET['post'] : get_queried_object_id();
+
+    if ( $post_id && $wp_admin_bar ) {
+
+        $wp_admin_bar->add_menu( array( 'id' => 'az_elements', 'title' => __( 'Elements' ), 'href' => '/' ) );
+
+    }
+
+}
+
+add_action('admin_bar_menu', 'create_dwb_menu', 2000);
+
+add_filter('piklist_admin_pages', 'piklist_theme_setting_pages');
+
+function piklist_theme_setting_pages( $pages )
+{
+    $pages[] = array(
+        'page_title' => __('Cache Settings'),
+        'menu_title' => __('Cache', 'piklist'),
+        'sub_menu' => 'themes.php', // Under Appearance menu
+        'capability' => 'manage_options',
+        'menu_slug' => 'az_cache_settings',
+        'setting' => 'theme_cache_settings',
+        'menu_icon' => plugins_url('piklist/parts/img/piklist-icon.png'),
+        'page_icon' => plugins_url('piklist/parts/img/piklist-page-icon-32.png'),
+        'single_line' => true,
+        'default_tab' => 'Basic',
+        'save_text' => 'Save Cache Settings'
+    );
+
+    return $pages;
+}
+
+add_action( 'updated_option', 'wpse_check_settings', 10, 3 );
+
+function wpse_check_settings( $option, $old_value, $new_value ) {
+
+    // Process saving of cache settings
+    if ( $option == 'theme_cache_settings') {
+
+        if ( isset( $new_value['az_cache_clear_all'] ) && $new_value['az_cache_clear_all'] == '1' ) {
+
+            // Unset the checkbox for clearing cache
+            $new_value['az_cache_clear_all'] = '';
+            update_option( 'theme_cache_settings', $new_value );
+            AZ_Cache::delete_all_transients();
+
+        }
+
+    }
+
+
+}
