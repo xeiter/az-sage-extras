@@ -136,6 +136,7 @@ if ( class_exists( 'Kirki' ) ) {
             // SVG logo theme colour
             $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-svg-logo .separator { fill: $' . $colour['colour_reference'] . '; }';
 
+
             // @todo fix this hack by deferentiating colours from their dark variations
             // Interaction state for link
             if ( !preg_match( '/-dark/', $colour['colour_reference'] ) ) {
@@ -148,12 +149,21 @@ if ( class_exists( 'Kirki' ) ) {
 
                 // Text link hover state theme colour
                 $variables_array[] = '.theme-' . $colour['colour_reference'] . ' a.themed-text:hover { color: $' . $colour['colour_reference'] . '-dark; }';
-                
+
+                // Custom underline link colour
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .text-underline a { color: $' . $colour['colour_reference'] . '; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . ' 30%, rgba(0, 0, 0, 0) 50%); }';
+
                 // Custom underline hover state on link theme colour
-                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .text-underline > a:hover { color: $' . $colour['colour_reference'] . '-dark; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . '-dark 30%, rgba(0, 0, 0, 0) 50%); }';
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .text-underline a:hover { color: $' . $colour['colour_reference'] . '-dark; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . '-dark 30%, rgba(0, 0, 0, 0) 50%); }';
+
+                // Custom link for element with themed background colour
+                $variables_array[] = '.background-' . $colour['colour_reference'] . ' .text-underline a { color: $colour-white; background-image: linear-gradient(to bottom, $colour-white 30%, rgba(0, 0, 0, 0) 50%); }';
+
+                // Hover custom link for element with themed background colour
+                $variables_array[] = '.background-' . $colour['colour_reference'] . ' .text-underline a:hover { color: $colour-white-dark; background-image: linear-gradient(to bottom, $colour-white-dark 30%, rgba(0, 0, 0, 0) 50%); }';
 
                 // Custom underline hover state on child .text-link theme colour
-                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .text-underline > .text-link:hover { color: $' . $colour['colour_reference'] . '-dark; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . '-dark 30%, rgba(0, 0, 0, 0) 50%); }';
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .text-underline .text-link:hover { color: $' . $colour['colour_reference'] . '-dark; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . '-dark 30%, rgba(0, 0, 0, 0) 50%); }';
 
 
             }
