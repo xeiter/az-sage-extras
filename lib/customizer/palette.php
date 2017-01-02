@@ -147,6 +147,9 @@ if ( class_exists( 'Kirki' ) ) {
                 // Button hover state theme colour
                 $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background .btn:hover { background-color: $' . $colour['colour_reference'] . '-dark; }';
 
+                // Hover state theme background colour
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .hover-themed-background:hover { background-color: $' . $colour['colour_reference'] . '-dark; }';
+
                 // Text link hover state theme colour
                 $variables_array[] = '.theme-' . $colour['colour_reference'] . ' a.themed-text:hover { color: $' . $colour['colour_reference'] . '-dark; }';
 
