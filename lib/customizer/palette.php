@@ -141,34 +141,46 @@ if ( class_exists( 'Kirki' ) ) {
             // Interaction state for link
             if ( !preg_match( '/-dark/', $colour['colour_reference'] ) ) {
 
-                // Button background black for theme colour
+                // Button black for themed background colour
                 $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background .btn { background-color: $colour-black }';
 
-                // Button hover state theme colour
+                // Button black hover to themed background colour
                 $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .themed-background .btn:hover { background-color: $' . $colour['colour_reference'] . '-dark; }';
 
-                // Hover state theme background colour
+                // Background colour hover state to darker themed colour
                 $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .hover-themed-background:hover { background-color: $' . $colour['colour_reference'] . '-dark; }';
 
-                // Text link hover state theme colour
+                // Text link hover state to darker themed colour
                 $variables_array[] = '.theme-' . $colour['colour_reference'] . ' a.themed-text:hover { color: $' . $colour['colour_reference'] . '-dark; }';
 
-                // Custom underline link colour
-                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .text-underline a { color: $' . $colour['colour_reference'] . '; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . ' 30%, rgba(0, 0, 0, 0) 50%); }';
+                // CUSTOM UNDERLINE TEXT LINK
 
-                // Custom underline hover state on link theme colour
+                // Colour inherit from theme colour
+                // 1. Normal state - theme colour
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .text-underline a { color: $' . $colour['colour_reference'] . '; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . ' 30%, rgba(0, 0, 0, 0) 50%); }';
+                // 2. Hover state - theme dark colour
                 $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .text-underline a:hover { color: $' . $colour['colour_reference'] . '-dark; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . '-dark 30%, rgba(0, 0, 0, 0) 50%); }';
 
-                // Custom link for element with themed background colour
+                // Within background colour, element should be white colour
+                // 1. Normal state - white colour
                 $variables_array[] = '.background-' . $colour['colour_reference'] . ' .text-underline a { color: $colour-white; background-image: linear-gradient(to bottom, $colour-white 30%, rgba(0, 0, 0, 0) 50%); }';
-
-                // Hover custom link for element with themed background colour
+                // 2. Hover state -  white-dark colour
                 $variables_array[] = '.background-' . $colour['colour_reference'] . ' .text-underline a:hover { color: $colour-white-dark; background-image: linear-gradient(to bottom, $colour-white-dark 30%, rgba(0, 0, 0, 0) 50%); }';
 
-                // Custom underline hover state on child .text-link theme colour
+                // Text colour within background colour grey should inherit the theme colour
+                // 1. Normal state - theme colour
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .background-colour-grey .text-underline a { color: $' . $colour['colour_reference'] . '; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . ' 30%, rgba(0, 0, 0, 0) 50%); }';
+                // 2. Hover state - theme dark colour
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .background-colour-grey .text-underline a:hover { color: $' . $colour['colour_reference'] . '-dark; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . '-dark 30%, rgba(0, 0, 0, 0) 50%); }';
+
+
+                // .text-link selector inherit colour from theme
+                // 1. Normal state - theme colour
+                $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .text-underline .text-link { color: $' . $colour['colour_reference'] . '; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . ' 30%, rgba(0, 0, 0, 0) 50%); }';
+                // 2. Hover state - theme dark colour
                 $variables_array[] = '.theme-' . $colour['colour_reference'] . ' .text-underline .text-link:hover { color: $' . $colour['colour_reference'] . '-dark; background-image: linear-gradient(to bottom, $' . $colour['colour_reference'] . '-dark 30%, rgba(0, 0, 0, 0) 50%); }';
 
-
+                // EOF CUSTOM UNDERLINE TEXT LINK
             }
         }
 
