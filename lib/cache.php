@@ -27,10 +27,11 @@ class AZ_Cache {
      * @param $scope_id
      * @param $type
      * @param null $subject
+     * @param null|string $cache_id_suffix
      * @return string
      * @sttatic
      */
-    private static function _get_transient_name( $scope, $scope_id, $type, $subject = null ) {
+    private static function _get_transient_name( $scope, $scope_id, $type, $subject = null, $cache_id_suffix = null ) {
 
         $transient_name =
             self::$_transient_name_prefix .
@@ -41,7 +42,8 @@ class AZ_Cache {
             $type .
             self::$_delimiter .
             'cache' .
-            self::$_delimiter ;
+            self::$_delimiter .
+			$cache_id_suffix;
 
         if ( ! is_null( $subject ) ) {
             $transient_name = $transient_name . $subject;
@@ -62,9 +64,9 @@ class AZ_Cache {
      * @static
      * @return string
      */
-    public static function get_post_elements_transient_name( $post_id, $element_name = null ) {
+    public static function get_post_elements_transient_name( $post_id, $element_name = null, $cache_id_suffix = null ) {
 
-        return self::_get_transient_name( 'post', $post_id, 'element', $element_name );
+        return self::_get_transient_name( 'post', $post_id, 'element', $element_name, $cache_id_suffix );
 
     }
     
