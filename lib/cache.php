@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'post_updated', [ AZ_Cache, 'delete_post_elements_transients' ] );
+add_action( 'post_updated', [ 'AZ_Cache', 'delete_post_elements_transients' ] );
 
 class AZ_Cache {
 
